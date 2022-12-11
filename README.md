@@ -77,7 +77,7 @@
 | address       | string    | null: false                    |
 | house_number  | string    | null: false                    |
 | phone_number  | string    | null: false                    |
-| purchase      | reference | null: false, foreign_key: true |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
