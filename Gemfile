@@ -58,3 +58,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg'
 end
+
+gem 'devise'
+
+gem 'pry-rails'
+
+gem 'rspec-rails', '~> 4.0.0'
+
+gem 'factory_bot_rails'
