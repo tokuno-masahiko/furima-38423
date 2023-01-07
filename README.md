@@ -50,7 +50,7 @@
 
 <!-- - has_many :comments -->
 - belongs_to :user
-- has_one : purchase
+- has_one :purchase
 
 ## purchases テーブル
 <!-- 購入者と商品 -->
