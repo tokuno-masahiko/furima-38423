@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :item_fee, null: false
       t.references :user, null: false, foreign_key: true
 
+      
       t.timestamps
     end
   end
