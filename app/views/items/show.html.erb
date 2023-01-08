@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-      <span>¥<%= @item.item_fee %></span>
+      ¥<%= @item.item_fee %>
       </span>
       <span class="item-postage">
         <%= @item.fee.name %>
@@ -25,9 +25,9 @@
 
     <% if user_signed_in? %>
      <% if current_user.id == @item.user_id %>
-      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+      <%= link_to "商品の編集", '#', method: :get, class: "item-red-btn" %>
        <p class="or-text">or</p>
-      <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+      <%= link_to "削除", '#', method: :delete, class:"item-destroy" %>
 
      <% else %>
       <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
@@ -36,7 +36,7 @@
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.description %></span>
     </div>
     <table class="detail-table">
       <tbody>
