@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
 
   before_action :move_to_index, only: :edit
 
+  before_action :set_tweet, only: [:edit, :show]
+
   def index
     @items = Item.order("created_at DESC")
   end
@@ -26,7 +28,6 @@ class ItemsController < ApplicationController
   # end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
@@ -39,7 +40,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   private
@@ -54,5 +54,9 @@ class ItemsController < ApplicationController
     unless current_user.id == item.user_id
       redirect_to action: :index
     end
+  end
+
+  def set_tweet
+    @item = Item.find(params[:id])
   end
 end
