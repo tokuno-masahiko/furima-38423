@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_tweet, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: :edit
+  before_action :prevent_url, only: [:edit, :update, :destroy]
+
 
   def index
     @items = Item.order("created_at DESC")
@@ -58,4 +60,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def prevent_url
+    if @item.purchase != nil 
+      redirect_to root_path
+    end
+  end
 end
