@@ -10,5 +10,6 @@ FactoryBot.define do
     shipping_date { ShippingDate.all.sample }
     item_fee { '3000' }
     association :user
+    
   end
 end

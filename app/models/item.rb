@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   validates :image, :title, :description, :item_fee, :category_id, :status_id, :fee_id, :prefecture_id, :shipping_date_id, presence: true
 
   belongs_to :user
-  # has_one :purchase
+  has_one :purchase
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
