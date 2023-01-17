@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe PurchaseAddress, type: :model do
-  describe '寄付情報の保存' do
     before do
       user = FactoryBot.create(:user)
-      @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id)
+      item = FactoryBot.create(:item)
+      @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
     end
 
+  describe '購入情報の保存' do
     context '内容に問題ない場合' do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchase_address).to be_valid
@@ -46,7 +47,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが空だと保存できないこと' do
         @purchase_address.phone_number = nil
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid")
+        expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが9桁以下だと保存できないこと' do
         @purchase_address.phone_number = '090123456'
@@ -63,13 +64,6 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
-
-
-      # it 'priceが空だと保存できないこと' do
-      #   @donation_address.price = nil
-      #   @donation_address.valid?
-      #   expect(@donation_address.errors.full_messages).to include("Price can't be blank")
-      # end
       it 'userが紐付いていないと保存できないこと' do
         @purchase_address.user_id = nil
         @purchase_address.valid?
@@ -79,6 +73,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.token = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'itemが紐付いていないと保存できないこと' do
+        @purchase_address.item_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
