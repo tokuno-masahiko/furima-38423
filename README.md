@@ -83,4 +83,3 @@
 
 - belongs_to :purchase
 
-
