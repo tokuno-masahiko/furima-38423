@@ -1,5 +1,5 @@
 # capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
-lock 'Capistrano (3.17.2)'
+lock 'Capistrano 3.17.2'
 
 # Capistranoのログの表示に利用する
 set :application, 'furima-38423'
